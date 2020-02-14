@@ -2,13 +2,13 @@ const path = require(`path`)
 const nodeExternals = require(`webpack-node-externals`)
 const WebpackShellPlugin = require(`webpack-shell-plugin`)
 
-const { NODE_ENV = `production` } = process.env
+const { NODE_ENV = `development` } = process.env
 
 module.exports = {
   entry: `./src/index.ts`,
   mode: NODE_ENV,
   target: `node`,
-  watch: NODE_ENV === `development`,
+  watch: NODE_ENV !== `production`,
   externals: [nodeExternals()],
   output: {
     path: path.resolve(__dirname, `build`),
